@@ -3,7 +3,7 @@
 3. Comment (<!--[Body]-->)
 4. Main (main)
 5. Image (img) => src, alt
-6. Link (a) => href
+6. Link (a - anchor) => href
    - call id
    - use #
    - target -> blank
