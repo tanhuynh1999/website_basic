@@ -1,0 +1,123 @@
+<!--
+    User Story #1: My portfolio should have a welcome section with an id of welcome-section.
+
+    User Story #2: The welcome section should have an h1 element that contains text.
+
+    User Story #3: My portfolio should have a projects section with an id of projects.
+
+    User Story #4: The projects section should contain at least one element with a class of project-tile to hold a project.
+
+    User Story #5: The projects section should contain at least one link to a project.
+
+    User Story #6: My portfolio should have a navbar with an id of navbar.
+
+    User Story #7: The navbar should contain at least one link that I can click on to navigate to different sections of the page.
+
+    User Story #8: My portfolio should have a link with an id of profile-link, which opens my GitHub or FCC profile in a new tab.
+
+    User Story #9: My portfolio should have at least one media query.
+
+    User Story #10: The height of the welcome section should be equal to the height of the viewport.
+
+    User Story #11: The navbar should always be at the top of the viewport.
+
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="index.css" type="text/css">
+</head>
+
+<body>
+    <div id="app">
+        <v-app>
+            <v-app-bar app color="#B71C1C" height="64">
+                <v-spacer></v-spacer>
+                <v-responsive max-width="500" id="navbar" class="nav">
+                    <div class="float-right">
+                        <v-menu offset-y v-for="(menu, i) in menus">
+                            <template v-slot:activator="{ on, attrs }">
+                              <v-btn
+                                height="64"
+                                text
+                                :href="`#${menu.link}`"
+                                dark
+                                class="btn-item"
+                                v-bind="attrs"
+                                v-on="on"
+                              >
+                                {{menu.name}}
+                              </v-btn>
+                            </template>
+                        </v-menu>
+                    </div>
+                </v-responsive>
+            </v-app-bar>
+            <v-main class="grey lighten-2">
+                <section id="welcome-section" class="welcome-section">
+                    <h1 id="welcome-section" class="white--text">Hey I am Mimic</h1>
+                    <p class="red--text text--darken-4">a web developer</p>
+                </section>
+                <section id="projects" class="projects-section">
+                    <h1 id="project-tile" class="white--text text-center project-tile">{{titleProject}}</h1>
+                    <v-container>
+                        <v-row class="mt-10">
+                            <v-col v-for="(project, i) in projects" :key="i" cols="12" sm="4">
+                                <v-card link target="_blank" :href="project.link" class="mx-auto">
+                                    <v-img height="380" :src="project.image" height="200px"></v-img>
+
+                                    <v-card-subtitle class="text-center blue-grey darken-4 name">
+                                        <h2 class="white--text">
+                                            <span class="hover-title">< </span>{{project.name}} <span class="hover-title">/></span>
+                                        </h2>
+                                    </v-card-subtitle>
+                                </v-card>
+                            </v-col>
+                        </v-row>
+                        <div class="btn-show-all">
+                            <v-btn x-large target="_blank" :href="linkProject" elevation="2" class="btn" color="#263238" dark>Show all
+                                <v-icon size="15">mdi-arrow-right-drop-circle</v-icon>
+                            </v-btn>
+                        </div>
+                    </v-container>
+                </section>
+                <section id="contact" class="contact-section">
+                    <h1 class="white--text">Let's work together...</h1>
+                    <p class="white--text">How do you take your coffee?</p>
+                    <div class="contact-link mt-4">
+                        <v-btn id="profile-link" target="_blank" :href="link.link" dark class="ml-2 mt-2 btn" v-for="(link, i) in links" :key="i" text>
+                            <v-icon>{{link.icon}}</v-icon>
+                            <span class="ml-2">{{link.name}}</span>
+                        </v-btn>
+                    </div>
+                </section>
+                <footer id="footer" class="footer">
+                    <v-container>
+                        <v-row class="mt-2">
+                            <v-col sm="8" cols="12">
+                                <p>**This is just a fake portfolio. All the projects and contact details given are not real.</p>
+                            </v-col>
+                            <v-col sm="4" cols="12">
+                                <p>© Created for freeCodeCamp </p>
+                            </v-col>
+                        </v-row>
+                    </v-container>
+                </footer>
+            </v-main>
+        </v-app>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="index.js"></script>
+
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+
+</html>

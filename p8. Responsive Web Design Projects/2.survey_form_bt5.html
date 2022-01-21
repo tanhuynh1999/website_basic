@@ -1,0 +1,237 @@
+<!--
+
+    User Story #1: I can see a title with id="title" in H1 sized text.
+
+    User Story #2: I can see a short explanation with id="description" in P sized text.
+
+    User Story #3: I can see a form with id="survey-form".
+
+    User Story #4: Inside the form element, I am required to enter my name in a field with id="name".
+
+    User Story #5: Inside the form element, I am required to enter an email in a field with id="email".
+
+    User Story #6: If I enter an email that is not formatted correctly, I will see an HTML5 validation error.
+
+    User Story #7: Inside the form, I can enter a number in a field with id="number".
+
+    User Story #8: If I enter non-numbers in the number input, I will see an HTML5 validation error.
+
+    User Story #9: If I enter numbers outside the range of the number input, which are defined by the min and max attributes, I will see an HTML5 validation error.
+
+    User Story #10: For the name, email, and number input fields inside the form I can see corresponding labels that describe the purpose of each field with the following ids: id="name-label", id="email-label", and id="number-label".
+
+    User Story #11: For the name, email, and number input fields, I can see placeholder text that gives me a description or instructions for each field.
+
+    User Story #12: Inside the form element, I can select an option from a dropdown that has a corresponding id="dropdown".
+
+    User Story #13: Inside the form element, I can select a field from one or more groups of radio buttons. Each group should be grouped using the name attribute.
+
+    User Story #14: Inside the form element, I can select several fields from a series of checkboxes, each of which must have a value attribute.
+
+    User Story #15: Inside the form element, I am presented with a textarea at the end for additional comments.
+
+    User Story #16: Inside the form element, I am presented with a button with id="submit" to submit all my inputs.
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <title>Survey Form</title>
+    <style>
+        :root {
+            --color-white: #f3f3f3;
+            --color-darkblue: #1b1b32;
+            --color-darkblue-alpha: rgba(27, 27, 50, 0.8);
+            --color-green: #37af65;
+        }
+
+        body {
+            font-family: sans-serif;
+            font-size: 1rem;
+            line-height: 1.4;
+            margin: 0;
+            font-weight: 400;
+            color: var(--color-white);
+            padding: 0;
+            background-color: var(--color-darkblue-alpha);
+        }
+
+        body::before {
+            content: "";
+            background-image: linear-gradient(115deg,
+                    rgba(58, 58, 158, 0.8),
+                    rgba(136, 136, 206, 0.7)),
+                url(https://cdn.freecodecamp.org/testable-projects-fcc/images/survey-form-background.jpeg);
+            position: fixed;
+            top: 0;
+            z-index: -1;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        header {
+            text-align: center;
+            margin: 30px 0px;
+        }
+
+        .container {
+            max-width: 800px;
+        }
+
+        #survey-form {
+            background-color: var(--color-darkblue);
+            padding: 30px;
+            opacity: 0.9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 id="title">freeCodeCamp Survey Form</h1>
+            <p id="description">
+                Thank you for taking the time to help us improve the platform
+            </p>
+        </header>
+        <form id="survey-form">
+            <div class="mb-3">
+                <label id="name-label" for="name" class="form-label">Name</label>
+                <input type="text" required class="form-control" id="name" name="name" placeholder="Enter your name" />
+            </div>
+            <div class="mb-3">
+                <label id="email-label" for="email" class="form-label">Email</label>
+                <input type="email" required class="form-control" id="email" name="email" placeholder="Email" />
+            </div>
+            <div class="mb-3">
+                <label id="number-label" for="number" class="form-label">Age</label>
+                <input type="number" class="form-control" id="number" name="number" min="12" max="70"
+                    placeholder="Number" />
+            </div>
+            <div class="mb-3">
+                <p>Which option best describes your current role?</p>
+                <select id="dropdown" class="form-select" name="role">
+                    <option selected disabled>Select current role</option>
+                    <option value="student">Student</option>
+                    <option value="job">Full Time Job</option>
+                    <option value="learner">Full Time Learner</option>
+                    <option value="preferNo">Prefer not to say</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <p>Would you recommend freeCodeCamp to a friend?</p>
+                <div class="form-check">
+                    <input checked class="form-check-input" value="definitely" type="radio" name="user-recommend" />
+                    <label class="form-check-label"> Definitely </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" value="maybe" type="radio" name="user-recommend" />
+                    <label class="form-check-label">Maybe</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" value="not-sure" type="radio" name="user-recommend" />
+                    <label class="form-check-label">Not sure</label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label id="role-label" for="most-like" class="form-label">
+                    What is your favorite feature of freeCodeCamp?
+                </label>
+                <select id="most-like" class="form-select" name="mostLike">
+                    <option selected disabled>Select an option</option>
+                    <option value="challenges">Challenges</option>
+                    <option value="projects">Projects</option>
+                    <option value="community">Community</option>
+                    <option value="openSource">Open Source</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <p>What would you like to see improved? (Check all that apply)</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="prefer" value="front-end-projects" />
+                    <label class="form-check-label"> Front-end Projects </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="prefer" value="back-end-projects" />
+                    <label class="form-check-label"> Back-end Projects </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="prefer" value="data-visualization" />
+                    <label class="form-check-label"> Data Visualization </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="prefer" value="challenges" />
+                    <label class="form-check-label"> Challenges </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="prefer" value="open-source-community" />
+                    <label class="form-check-label"> Open Source Community </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="prefer" value="gitter-help-rooms" />
+                    <label class="form-check-label"> Gitter help rooms </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="prefer" value="videos" />
+                    <label class="form-check-label"> Videos </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="prefer" value="city-meetups" />
+                    <label class="form-check-label"> City Meetups </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="prefer" value="wiki" />
+                    <label class="form-check-label"> Wiki </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="prefer" value="forum" />
+                    <label class="form-check-label"> Forum </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="prefer" value="additional-courses" />
+                    <label class="form-check-label"> Additional Courses </label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="comments" class="form-label">Any comments or suggestions?</label>
+                <textarea class="form-control" id="comments" name="comment" rows="3"></textarea>
+            </div>
+            <div class="d-grid gap-2">
+                <button id="submit" class="btn btn-success" type="submit">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+
+</html>
